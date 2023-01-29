@@ -13,7 +13,7 @@ when the project is created type in terminal to check the django project is work
 #### python manage.py runserver
 
 if we want to change directory, then type in terminal
-#### cd <folder name>
+#### cd <folder_name>
 
 when we create/start the project, there are many files coming into the current folder such as -
 #### urls.py
