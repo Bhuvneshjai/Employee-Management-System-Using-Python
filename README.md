@@ -16,14 +16,5 @@ if we want to change directory, then type in terminal
 #### cd <folder_name>
 
 when we create/start the project, there are many files coming into the current folder such as -
-#### urls.py
-#### views.py
-#### settings.py
-#### models.py
-#### asgi.py
-#### wsgi.py
-#### __init__.py
-#### db.sqlite3
-#### manage.py
-#### __pycache__
+#### urls.py , views.py , settings.py , models.py , asgi.py , wsgi.py , __init__.py , db.sqlite3 , manage.py , __pycache__
 
