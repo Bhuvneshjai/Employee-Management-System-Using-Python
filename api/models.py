@@ -13,3 +13,21 @@ class Company(models.Model):
                                     ("mobile-phones","Mobiles Phones")))
     added_date = models.DateTimeField(auto_now = True)
     is_active = models.BooleanField(default = True)
+
+    # This method override the company object to company name 
+    # This method helps us to give the actual name in the form
+    def __str__(self):
+        return self.name +", "+ self.location
+
+# Employee Model
+class Employee(models.Model):
+    name = models.CharField(max_length = 100)
+    email = models.CharField(max_length = 50)
+    address = models.CharField(max_length = 100)
+    phone = models.CharField(max_length = 10)
+    position = models.CharField(max_length = 50, choices = (
+        ('M','Manager'),
+        ('SD','Software Developer'),
+        ('PL','Project Leader')
+    ))
+    Company = models.ForeignKey(Company, on_delete = models.CASCADE)

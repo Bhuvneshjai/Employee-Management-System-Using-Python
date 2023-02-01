@@ -28,9 +28,9 @@ In this we have two folder as
 #### companyapi > urls.py
 ###### from .views import home_page
 ###### urlpatterns = [
-######    path('admin/',admin.site.urls),
-######    path('home/',home_page)
-###### ]
+###### --------    path('admin/',admin.site.urls),
+###### --------   path('home/',home_page)
+###### -------- ]
 
 --------------------------------------------------------------------------------------------------------------------------
 
@@ -39,16 +39,16 @@ In this we have two folder as
 ###### from .views import home_page
 
 ###### urlpatterns = [
-######     path('admin/', admin.site.urls),
-######     path('home/',home_page),
-######     path('api/v1/',include('api.urls'))
-###### ]
+###### --------    path('admin/', admin.site.urls),
+###### --------    path('home/',home_page),
+###### --------    path('api/v1/',include('api.urls'))
+###### -------- ]
 
 #### companyapi > views.py
 ###### from django.http import HttpResponse
 ###### def home_page(request):
-######    print("view.py is used to define the function which is used in the urls.py)
-######    return HttpResponse("This is home page")
+###### --------   print("view.py is used to define the function which is used in the urls.py)
+###### --------   return HttpResponse("This is home page")
 
 ###### Terminal -> python manage.py runserver
 
@@ -56,20 +56,36 @@ In this we have two folder as
 
 ###### from django.http import HttpResponse, JSONResponse
 ###### def home_page(request)
-######     friends = [
-######         'Miss Prabhi',
-######         'Mr Bhuvi',
-######         'Jain'
-######     ]
-######     return JSONResponse(friends, safe = False)
+###### --------    friends = [
+###### --------        'Miss Prabhi',
+###### --------        'Mr Bhuvi',
+###### --------        'Jain'
+###### --------    ]
+###### --------    return JSONResponse(friends, safe = False)
 
 --------------------------------------------------------------------------------------------------------------------------
 
 #### companyapi > settings.py 
 ###### INSTALLED APPS = [
-######     ,'rest_framework'
-######     ,'api'
-###### ]
+###### --------    ,'rest_framework'
+###### --------    ,'api'
+###### -------- ]
+
+###### When we put this we cannot create, update and delete api's
+###### REST_FRAMEWORK = {
+###### ---------    # ---> Use Django's standard `django.contrib.auth` permissions,
+###### ---------    # ---> or allow read-only access for unauthenticated users.
+###### ---------    # ---> When we put this we cannot update and delete api's
+######
+######     'DEFAULT_PERMISSION_CLASSES': [
+###### --------        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+###### --------    ],
+######
+###### --------     # ---> You just need to remove the browsable API renderer from list of supported renderers for the view. The below code is used for remove the browsable api's. But it gives only in JSON.
+###### --------    'DEFAULT_RENDERER_CLASSES': (
+###### --------        'rest_framework.renderers.JSONRenderer',
+###### --------    )
+###### -------- }
 
 
 ### 2. Set up Django Models
@@ -80,15 +96,15 @@ Terminal -> python manage.py startapp <folder_name> (api)
 #### api > models.py
 ###### from django.db import models
 ###### class Company(models.Model):
-######     company_id = models.AutoField(primary_key = True)
-######     name = models.CharField(max_length = 50)
-######     location = models.CharField(max_length = 50)
-######     about = models.TextField()
-######     company_type = models.CharField(max_length = 100, choices = (("it","Information Technology"),
-######                                     ("non-it","Non Information Technology"),
-######                                     ("mobile-phones","Mobiles Phones")))
-######     added_date = models.DateTimeField(auto_now = True)
-######     active = models.BooleanField(default = True)
+###### --------     company_id = models.AutoField(primary_key = True)
+###### --------     name = models.CharField(max_length = 50)
+###### --------     location = models.CharField(max_length = 50)
+###### --------     about = models.TextField()
+###### --------     company_type = models.CharField(max_length = 100, choices = (("it","Information Technology"),
+###### --------                                     ("non-it","Non Information Technology"),
+###### --------                                     ("mobile-phones","Mobiles Phones")))
+###### --------     added_date = models.DateTimeField(auto_now = True)
+###### --------     active = models.BooleanField(default = True)
 
 
 ### 3. Set up Serializers
@@ -96,19 +112,19 @@ Terminal -> python manage.py startapp <folder_name> (api)
 ###### from rest_framework import serializers
 ###### from api.models import Company
 ###### class CompanySerializer(serializers.HyperlinkedModelSerializer):
-######     class Meta:
-######         model = Company
-######         fields = "__all__"
+###### --------     class Meta:
+###### --------      -------   model = Company
+###### --------      -------   fields = "__all__"
 
 --------------------------------------------------------------------------------------------------------------------------
 
 ###### from rest_framework import serializers
 ###### from api.models import Company
 ###### class CompanySerializer(serializers.HyperlinkedModelSerializer):
-######     company_id = serializers.ReadOnlyField() 
-######     class Meta:
-######         model = Company
-######         fields = "__all__"
+###### --------     company_id = serializers.ReadOnlyField() 
+###### --------     class Meta:
+###### --------     ------    model = Company
+###### --------     ------    fields = "__all__"
 
 
 ### 4. Set up Views
@@ -118,8 +134,8 @@ Terminal -> python manage.py startapp <folder_name> (api)
 ###### from rest_framework import viewsets
 ###### from api.models import Company
 ###### class CompanyViewSet(viewsets.ModelViewSet):
-######     queryset = Company.objects.all()
-######     serializer_class = CompanySerializer
+###### --------     queryset = Company.objects.all()
+###### --------     serializer_class = CompanySerializer
 
 
 ### 5. Set up Urls
@@ -133,8 +149,8 @@ Terminal -> python manage.py startapp <folder_name> (api)
 ###### router.register(r'companies',CompanyViewSet)
 
 ###### urlpatterns = [
-######     path('',include(router.urls))
-###### ]
+###### --------     path('',include(router.urls))
+###### -------- ]
 
 After that - we go in the terminal, it is helpful to create table and connect with database
 Terminal -> python manage.py makemigrations
