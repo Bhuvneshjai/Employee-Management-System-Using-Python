@@ -18,6 +18,30 @@ if we want to change directory, then type in terminal
 when we create/start the project, there are many files coming into the current folder such as -
 ###### # ---> urls.py , views.py , settings.py , models.py , asgi.py , wsgi.py , __init__.py , db.sqlite3 , manage.py , __pycache__
 
+when we create models in models.py, after creating the model two commands is compulsory to run in the terminal for set the database.
+###### -> python manage.py makemigrations
+###### -> python manage.py migrate
+
+if we want to create the admin panel for doing crud operation by the help of admin, go in the terminal and write, after that go in the admin.py and set the admin panel.
+###### -> python manage.py createsuperuser
+
+### api > admin.py
+from django.contrib import admin
+from api.models import Company, Employee
+
+#### Register your models here.
+class CompanyAdmin(admin.ModelAdmin):
+    list_display = ('name','location','company_type',)
+    search_fields = ('name',)
+
+class EmployeeAdmin(admin.ModelAdmin):
+    list_display = ('name','email','position',)
+    list_filter = ('position',)
+
+#### Registered Here
+admin.site.register(Company, CompanyAdmin)
+admin.site.register(Employee, EmployeeAdmin)
+
 ## Six Steps to create API:
 ### 1. Install Python , Django and Django Rest Framework
 After Successfully Installed, We Check the JSON Response through API
@@ -232,8 +256,8 @@ Terminal -> python manage.py startapp <folder_name> (api)
 ###### -------- ]
 
 After that - we go in the terminal, it is helpful to create table and connect with database
-Terminal -> python manage.py makemigrations
-         -> python manage.py migrate
+###### Terminal -> python manage.py makemigrations
+######         -> python manage.py migrate
 
 ### 6. Test your API'S
 There are two method to test API
