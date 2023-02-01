@@ -26,21 +26,21 @@ if we want to create the admin panel for doing crud operation by the help of adm
 ###### -> python manage.py createsuperuser
 
 ### api > admin.py
-from django.contrib import admin
-from api.models import Company, Employee
+###### from django.contrib import admin
+###### from api.models import Company, Employee
 
 #### Register your models here.
-class CompanyAdmin(admin.ModelAdmin):
-    list_display = ('name','location','company_type',)
-    search_fields = ('name',)
+###### class CompanyAdmin(admin.ModelAdmin):
+######     ###### ---- list_display = ('name','location','company_type',)
+######     ###### ---- search_fields = ('name',)
 
-class EmployeeAdmin(admin.ModelAdmin):
-    list_display = ('name','email','position',)
-    list_filter = ('position',)
+###### class EmployeeAdmin(admin.ModelAdmin):
+######     ###### ---- list_display = ('name','email','position',)
+######     ###### ---- list_filter = ('position',)
 
 #### Registered Here
-admin.site.register(Company, CompanyAdmin)
-admin.site.register(Employee, EmployeeAdmin)
+###### admin.site.register(Company, CompanyAdmin)
+###### admin.site.register(Employee, EmployeeAdmin)
 
 ## Six Steps to create API:
 ### 1. Install Python , Django and Django Rest Framework
