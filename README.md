@@ -9,3 +9,9 @@
 7. Configure the necessary routes and functions to handle user input and return a fare prediction. This may involve using Flask's request object to extract user input and returning the predicted fare as a response.
 8. Test the application and make adjustments as necessary to ensure accurate and reliable fare predictions. This may involve testing the application locally on your computer using the Flask development server, as well as testing it on different devices and browsers to ensure compatibility.
 #### * Overall, creating a flight fare prediction project using machine learning with Flask, linear regression, and random forest involves several steps, including data collection and preprocessing, model training, web development, and deployment. Each step requires a different set of skills and tools, but by following a structured approach
+
+### Home Page
+![image](https://github.com/Bhuvneshjai/Flight-Fare-Prediction-Using-Machine-Learning/assets/82877515/c5469aa2-00c4-4e2c-a70b-2ffeefc8eccf)
+
+### Footer Page
+![image](https://github.com/Bhuvneshjai/Flight-Fare-Prediction-Using-Machine-Learning/assets/82877515/ca8b5a66-2767-403f-81be-0853afefb07d)
