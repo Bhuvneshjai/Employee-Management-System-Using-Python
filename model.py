@@ -5,7 +5,6 @@ import seaborn as sns
 import time
 import pickle
 
-##Source - https://www.kaggle.com/nikhilmittal/flight-fare-prediction-mh
 train=pd.read_excel('Data_Train.xlsx',engine='openpyxl')
 sample = pd.read_excel('Sample_submission.xlsx',engine='openpyxl')
 test = pd.read_excel('Test_set.xlsx',engine='openpyxl')
@@ -34,6 +33,7 @@ df['Departure_Minute'] = df['Departure_Minute'].astype(int)
 
 #Now droping the parent features since we don't need them
 df.drop(['Date_of_Journey','Dep_Time','Total_Stops'],axis=1,inplace=True)
+
 #Label encoding executed manually
 source_dict = {y:x for x,y in enumerate(df.Source.value_counts().index.sort_values())}
 destination_dict = {'Banglore':0,'Cochin':1,'Delhi':2,'Kolkata': 3,'Hyderabad':4,'New Delhi':5}
